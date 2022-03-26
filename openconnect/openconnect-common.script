@@ -1,0 +1,2 @@
+#!/bin/bash
+openconnect --config=/opt/openconnect/${ANYCONNECT_CFG}.conf --user=$ANYCONNECT_USER ${ANYCONNECT_CERT:+ --servercert} ${ANYCONNECT_CERT}  $ANYCONNECT_SERVER <<< $ANYCONNECT_PASSWORD

@@ -1,0 +1,22 @@
+[Unit]
+Description=OpenConnect for VPN
+Wants=network.target
+After=network.target auditd.service
+#Before=network.target
+
+[Service]
+Nice=-20
+EnvironmentFile=-/opt/openconnect/default.env
+Type=forking
+ExecStart=/opt/openconnect/openconnect-common.script
+#ExecStartPost=/bin/bash /opt/openconnect/${ANYCONNECT_CFG}-post-cfg.sh a
+#ExecStop=-/bin/bash /opt/openconnect/${ANYCONNECT_CFG}-post-cfg.sh d
+#Restart=on-failure
+TimeoutStartSec=120s
+KillSignal=SIGINT
+Restart=always
+RestartSec=60s
+
+
+[Install]
+WantedBy=multi-user.target
